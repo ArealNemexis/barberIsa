@@ -1,0 +1,5 @@
+/node_modules
+a.txt
+isonilda.session.sql
+*.sqlite
+.vscode
