@@ -2,11 +2,13 @@ const express = require('express')
 const app = express()
 const port = 1264
 const router = require('./routes')
+const cors = require('cors')
 
-app.listen(port)
 
 app.use(express.json())
+app.use(cors())
 app.use(router)
+app.listen(port)
 
 
 /*
