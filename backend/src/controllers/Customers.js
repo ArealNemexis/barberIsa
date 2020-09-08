@@ -8,7 +8,7 @@ const CustomersClass = {
     },
     create: async (request, response) => {
         const { name, cpf, phone } = request.body;
-
+        console.log("creating a new user");
         await connection("customers").insert({ cpf, phone, name });
 
         return response.status(201).json({ message: "success" });
@@ -25,6 +25,7 @@ const CustomersClass = {
             if (candidato["id"] == id) {
                 try {
                     await connection("customers").where("id", id).delete();
+                    console.log("deleting customer");
                     return response.status(200).json({
                         message: "deletado com sucesso",
                         id_deletado: candidato["id"],
