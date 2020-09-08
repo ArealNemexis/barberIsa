@@ -1,21 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const connection = require('./database/connection')
-const { request } = require('express')
+const CustomersClass = require('./controllers/Customers')
 
-router.get('/users', async (request, response)=>{
-    var resposta = await connection.select('*').from('customers')
+router.get('/customers', CustomersClass.index)
 
-    return response.json(resposta)
-})
+router.post('/customers', CustomersClass.create)
 
-router.post('/users', async (request, response)=>{
-    const { name, cpf, phone} = request.body
+router.delete('/customers/:id', CustomersClass.delete)
 
-    await connection('customers').insert({cpf, phone, name})
+router.put('/customers/:id', CustomersClass.put)
 
-    return response.json({message:"success"})
-})
-
+router.patch('/customers', CustomersClass.patch)
 
 module.exports = router

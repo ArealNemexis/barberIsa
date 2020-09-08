@@ -3,3 +3,4 @@ a.txt
 isonilda.session.sql
 *.sqlite
 .vscode
+.prettierrc
