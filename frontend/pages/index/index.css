@@ -1,0 +1,22 @@
+/* customers get*/
+
+#root {
+
+}
+
+.customer-div {
+    color: black;
+    background-color: teal;
+    margin-bottom: 8px;
+    border: #326564 solid 4px;
+    text-align: center;
+}
+
+.p-customer {
+    font-size: 20px;
+    color: #fbfbfb;
+}
+
+.h2-customer {
+    color: rgb(20, 220, 87);
+}

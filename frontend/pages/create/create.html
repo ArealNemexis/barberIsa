@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="create.css">
+    <title>CreatePage</title>
+</head>
+<body>
+    <header>
+        <h1>BarberIsa</h1>
+        <nav>
+            <ul class="nav-list">
+                <li class="li-header"><a href="../index/index.html">index</a></li>
+                <li class="li-header"><a href="../create/create.html">create</a></li>
+                <li class="li-header"><a href="../delete/delete.html">delete</a></li>
+                <li class="li-header"><a href="../put/put.html">put</a></li>
+                <li class="li-header"><a href="../patch/patch.html">patch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="seninho">
+        <form id="form-customer">
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name">
+
+            <label for="cpf">CPF:</label>
+            <input id="cpf" type="text" name="cpf">
+
+            <label for="phone">Phone:</label>
+            <input id="phone" type="text" name="phone">
+
+            <input type="submit" value="ENVIAR">
+        </form>
+    </div>
+
+
+    <script>
+        var form = document.getElementById('form-customer')
+
+        form.addEventListener('submit', (event)=>{
+            event.preventDefault()
+            console.log(event);
+
+            let myData = {}
+            let formData = new FormData(event.target)
+
+            formData.forEach((value, key)=>{
+                myData[key] = value
+            })
+            console.log(myData);
+
+            fetch("http://localhost:1264/customers",{
+                method:'POST',
+                body: JSON.stringify(myData),
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                redirect:"manual"
+            }).then(response => response.json()).then(body=>console.log(body))
+
+
+        })
+    </script>
+</body>
+</html>

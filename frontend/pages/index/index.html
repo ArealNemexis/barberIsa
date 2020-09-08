@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="index.css">
+    <title>BarberIsa</title>
+</head>
+<body>
+    <header>
+        <h1>BarberIsa</h1>
+        <nav>
+            <ul class="nav-list">
+                <li class="li-header"><a href="index.html">index</a></li>
+                <li class="li-header"><a href="../create/create.html">create</a></li>
+                <li class="li-header"><a href="../delete/delete.html">delete</a></li>
+                <li class="li-header"><a href="../put/put.html">put</a></li>
+                <li class="li-header"><a href="../patch/patch.html">patch</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="root">
+    </div>
+                
+
+        <script>
+            fetch('http://localhost:1264/customers').then(response=>response.json()).then(body=>{
+                var div_root = document.querySelector("#root")
+                body.map(item => {
+                    let div_atual = document.createElement('div')
+                    div_atual.setAttribute('class','customer-div')
+
+                    let h2_customer = document.createElement('h2')
+                    h2_customer.setAttribute('class', 'h2-customer')
+                    
+                    h2_customer.innerText = `ID: ${item.id}`
+                    div_atual.appendChild(h2_customer)
+
+                    let name = document.createElement('p')
+                    let cpf = document.createElement('p')
+                    let phone = document.createElement('p')
+
+                    name.setAttribute('class','p-customer')
+                    cpf.setAttribute('class','p-customer')
+                    phone.setAttribute('class','p-customer')
+
+                    name.innerText = `Name: ${item.name}`
+                    cpf.innerText = `Cpf: ${item.cpf}`
+                    phone.innerText = `Phone: ${item.phone}`
+
+                    div_atual.appendChild(name)
+                    div_atual.appendChild(cpf)
+                    div_atual.appendChild(phone)
+
+                    div_root.appendChild(div_atual)
+                })
+            })
+        </script>
+    
+</body>
+</html>
