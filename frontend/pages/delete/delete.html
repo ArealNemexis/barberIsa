@@ -19,5 +19,47 @@
             </ul>
         </nav>
     </header>
+
+    <form id="form-delete">
+        <label for="delete-id">ID:</label>
+        <input id="delete-id" type="text" name="delete-id">
+        <!-- <button type="submit">Apagar</button> -->
+        <button id="envio" type="button">Apagar</button>
+    </form>
+
+    <script>
+        var form = document.getElementById('delete-id')
+        var button = document.getElementById('envio')
+
+        button.addEventListener('click', (e)=>{
+            id = form.value
+            console.log(id);
+            fetch(`http://localhost:1264/customers/`+ id, {
+                method:'DELETE',
+                redirect: 'manual',
+                headers:{
+                    "Content-Type":'application/json'
+                },
+            }).then(response => response.json()).then(body=>console.log(body))
+        })
+
+        // form.addEventListener('submit', (e)=>{
+        //     e.preventDefault()
+
+        //     let data = {}
+        //     let formData = new FormData(e.target)
+        //     console.log(data);
+        //     formData.forEach((value, key)=>{
+        //         data[key] = value
+        //     })
+        //     // fetch(`http://localhost:1264/customers/`+ data.id, {
+        //     //     method:'DELETE',
+        //     //     redirect: 'manual',
+        //     //     headers:{
+        //     //         "Content-Type":'application/json'
+        //     //     },
+        //     // }).then(response => response.json()).then(body=>console.log(body))
+        // })
+    </script>
 </body>
 </html>
