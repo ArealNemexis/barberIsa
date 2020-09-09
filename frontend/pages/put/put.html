@@ -19,5 +19,75 @@
             </ul>
         </nav>
     </header>
+
+    <form id="form-put">
+        <label for="ID">ID:</label>
+        <input id="ID" type="text" name="ID">
+
+        <label for="name">Name:</label>
+        <input id="name" type="text" name="name">
+
+        <label for="cpf">CPF:</label>
+        <input id="cpf" type="text" name="cpf">
+
+        <label for="phone">Phone:</label>
+        <input id="phone" type="text" name="phone">
+
+        <button type="button" onclick="putMethod()">ENVIAR</button>
+    </form>
+    <script>
+        
+        function putMethod(){
+            var data = {
+                name:document.getElementById('name').value,
+                cpf:document.getElementById('cpf').value,
+                phone:document.getElementById('phone').value
+            }
+            var id = document.getElementById('ID').value
+
+            fetch(`http://localhost:1264/customers/` + id, {
+                method:'put',
+                body:JSON.stringify(data),
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            }).then(response => response.json()).then(body=>console.log(body))
+        }
+    </script>
+
+
+    <!-- <script>
+        var form_put = document.getElementById('form-put')
+
+        form_put.addEventListener('submit',(event)=>{
+            const data = {}
+            const formData = new FormData(event.target)
+            var id
+            
+
+            formData.forEach((value, key)=>{
+                if(key != 'id'){
+                    data[key] = value
+                }else{
+                    id = value
+                }
+            })
+            let debug = document.createElement('p')
+            debug.innerText = id + data
+
+            let hd = document.getElementsByTagName('header')
+            hd.appendChild(debug)
+            fetch(`http://localhost:1264/customers/` + id, {
+                method:'put',
+                body: JSON.stringify(data),
+                redirect:"manual",
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            }).then(response => response.json()).then(body=>console.log(body))
+        })
+    </script> -->
+
+    
 </body>
 </html>

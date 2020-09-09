@@ -19,5 +19,89 @@
             </ul>
         </nav>
     </header>
+    
+    <div id="put">
+        <form id="form-patch">
+            <label for="checkname">Nome:</label>
+            <input type="checkbox" name="" id="checkname">
+            <label for="checkcpf">Cpf:</label>
+            <input type="checkbox" name="" id="checkcpf">
+            <label for="checkphone">Phone:</label>
+            <input type="checkbox" name="" id="checkphone">
+    
+            <button id="select-item" type="button" onclick="gerarForm()">Selecionar Campos</button>
+        </form>
+
+    </div>
+    <!-- <label for="name">Name:</label>
+    <input id="name" type="text" name="name"> -->
+    <script>
+        function gerarForm(){
+            var div_put = document.getElementById('put')
+            var campos = ['name', 'cpf', 'phone']
+            var novo_form = document.createElement('form')
+            novo_form.setAttribute('id','form-gerado')
+            var id_label = document.createElement('label')
+            var id_input = document.createElement('input')
+
+            id_label.innerText = 'id'
+            id_label.setAttribute('for','id')
+
+            id_input.setAttribute('id', 'id-input')
+            id_input.setAttribute('type', 'text')
+            id_input.setAttribute('name', 'id')
+
+
+            novo_form.appendChild(id_label)
+            novo_form.appendChild(id_input)
+
+            for(item of campos){
+                if(document.getElementById(`check${item}`).checked){
+                    let label = document.createElement('label')
+                    label.setAttribute('for',item)
+                    label.innerText = item
+                    let input = document.createElement('input')
+                    input.setAttribute('id', item)
+                    input.setAttribute('type', 'text')
+                    input.setAttribute('name', item)
+
+                    novo_form.appendChild(label)
+                    novo_form.appendChild(input)
+                }
+            }
+            
+            var button = document.createElement('button')
+            button.setAttribute('type',"button")
+            button.setAttribute('onclick',"patchMethod()")
+            
+            button.innerText = 'Alterar'
+            
+            novo_form.appendChild(button)
+
+            div_put.appendChild(novo_form)
+            document.getElementById('select-item').style.display = 'none'
+        }
+
+        function patchMethod(){
+            var campos = ['name', 'cpf', 'phone']
+            var dados = {}
+            for (let item of campos) {
+                try {
+                    dados[item] = document.getElementById(item).value
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            var id_value = document.getElementById('id-input').value
+            fetch('http://localhost:1264/customers?id=' + id_value,{
+                method:'patch',
+                body:JSON.stringify(dados),
+                mode:'cors',
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            }).then(response => response.json()).then(body=>console.log(body))
+        }
+    </script>
 </body>
 </html>

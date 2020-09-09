@@ -32,6 +32,7 @@
         var button = document.getElementById('envio')
 
         button.addEventListener('click', (e)=>{
+            e.preventDefault()
             id = form.value
             console.log(id);
             fetch(`http://localhost:1264/customers/`+ id, {
@@ -40,7 +41,7 @@
                 headers:{
                     "Content-Type":'application/json'
                 },
-            }).then(response => response.json()).then(body=>console.log(body))
+            }).then(response => response.json()).then(body => console.log(body))
         })
 
         // form.addEventListener('submit', (e)=>{

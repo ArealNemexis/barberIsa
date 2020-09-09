@@ -61,20 +61,20 @@ const CustomersClass = {
         } catch (error) {
             return response.status(404).json({ error });
 		}
-		
+		console.log("updating user complete");
 		return response.status(200).json({message:'atualizado', customer:{name, cpf, phone}})
 	},
 	patch: async (request, response) => {
-		const pathParams = request.query
-		const id = pathParams.id
-
+		// const pathParams = request.query
+		const id = request.query.id
+        const body = request.body
 
 		try {
 			const candidato = await connection('customers').select('id').where('id', id).first()
 			
 			if(candidato['id'] == id){
 				try {
-					await connection('customers').where('id', id).update(pathParams)
+					await connection('customers').where('id', id).update(body)
 				} catch (error) {
 					console.log(error);
 					return response.status(400).json({error, number:1})
