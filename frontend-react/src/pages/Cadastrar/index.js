@@ -1,18 +1,33 @@
 import React from 'react';
 import NavBar from '../../components/NavBar'
 import api from "../../services/api";
-
 import PatternButton from "../../components/PatternButton"
+import "./style.css"
+
 class Cadastrar extends React.Component {
 
-    state = {
-        costumers : [],
-    };
+   constructor(props) {
+       super(props);
+       this.cadastroButton = this.cadastroButton.bind(this)
+   }
 
-    async componentDidMount() {
-        const response = await api.get("customers");
+    async cadastroButton() {
+       //const id = document.getElementById('form-cadastro').value
 
-        this.setState({ customers: response.data });
+       var name = document.getElementById('name').value;
+       var cpf = document.getElementById('cpf').value;
+       var phone = document.getElementById('phone').value;
+
+       await api.post('/customers', {
+           name,
+           cpf,
+           phone
+       });
+
+     document.getElementById('name').value='';
+     document.getElementById('cpf').value='';
+     document.getElementById('phone').value='';
+
     }
 
     render() {
@@ -22,16 +37,19 @@ class Cadastrar extends React.Component {
             <div>
                 <NavBar>BarberIsa</NavBar>
 
-                <form>
-                    <label for="name">Name:</label>
-                    <input id="name" type="text"  name = "name"/>
+                <form id = "form-cadastro">
+                    <label className="css-test"  htmlFor="name">Name:</label>
+                    <input id='name' type='text' name='name'/>
 
-                    <label for="cpf">Cpf:</label>
+                    <label className="css-test" htmlFor="cpf">Cpf:</label>
                     <input id="cpf" type="text"  name = "cpf"/>
-                    <PatternButton>
+
+                    <label className="css-test" htmlFor="phone">Phone:</label>
+                    <input id="phone" type="text"  name = "phone"/>
+
+                    <PatternButton onClick={this.cadastroButton}>
                         Enviar
                     </PatternButton>
-
                 </form>
             </div>
 

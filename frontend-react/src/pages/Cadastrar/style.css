@@ -1,0 +1,13 @@
+.css-test{
+    font-size: 20px;
+
+}
+
+#form-cadastro{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+
+}
