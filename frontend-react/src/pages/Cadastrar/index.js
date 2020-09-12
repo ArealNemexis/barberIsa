@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../../components/NavBar'
 import api from "../../services/api";
 
-
+import PatternButton from "../../components/PatternButton"
 class Cadastrar extends React.Component {
 
     state = {
@@ -28,6 +28,9 @@ class Cadastrar extends React.Component {
 
                     <label for="cpf">Cpf:</label>
                     <input id="cpf" type="text"  name = "cpf"/>
+                    <PatternButton>
+                        Enviar
+                    </PatternButton>
 
                 </form>
             </div>
