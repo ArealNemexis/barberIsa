@@ -47,7 +47,7 @@ class Cadastrar extends React.Component {
                     <label className="css-test" htmlFor="phone">Phone:</label>
                     <input id="phone" type="text"  name = "phone"/>
 
-                    <PatternButton onClick={this.cadastroButton}>
+                    <PatternButton className="cadastro-button" onClick={this.cadastroButton}>
                         Enviar
                     </PatternButton>
                 </form>

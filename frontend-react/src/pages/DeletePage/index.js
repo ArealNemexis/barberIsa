@@ -22,7 +22,7 @@ class DeletePage extends React.Component {
                 <form id="form-delete">
                     <label htmlFor="Id-delete">ID:</label>
                     <input type="text" id="Id-delete"></input>
-                    <PatternButton onClick={this.deleteButton}>
+                    <PatternButton className="delete-button" onClick={this.deleteButton}>
                         Apagar
                     </PatternButton>
                 </form>
