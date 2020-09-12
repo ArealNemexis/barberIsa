@@ -1,0 +1,22 @@
+button {
+    width: 130px;
+    height: 35px;
+    border: none;
+    padding: 0;
+    background-color: #45aaf2;
+    opacity: 0.8;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: larger;
+    border-radius: 5px;
+    box-shadow: 0px 6px 0px #0477be;
+    transition: all 0.2s;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 2px 0px #0477be;
+}
