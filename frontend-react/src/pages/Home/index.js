@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../../components/NavBar";
 import api from "../../services/api";
+import './home.css'
 
 class Home extends React.Component {
     state = {
@@ -19,9 +20,9 @@ class Home extends React.Component {
         return (
             <div>
                 <NavBar>BarberIsa</NavBar>
-                <ul>
+                <ul className="list-components">
                     {customers.map((customer) => (
-                        <li>
+                        <li className="components">
                             <h2>ID:{customer.id}</h2>
                             <p>Nome: {customer.name}</p>
                             <p>CPF: {customer.cpf}</p>

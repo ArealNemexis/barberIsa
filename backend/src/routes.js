@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express')//puxanod o modulo
+const router = express.Router() //inicializa
 const CustomersClass = require('./controllers/Customers')
 
 router.get('/customers', CustomersClass.index)
@@ -12,4 +12,4 @@ router.put('/customers/:id', CustomersClass.put)
 
 router.patch('/customers', CustomersClass.patch)
 
-module.exports = router
+module.exports = router//exporta - index
