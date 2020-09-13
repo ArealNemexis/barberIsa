@@ -6,6 +6,7 @@ import Cadastrar from "./pages/Cadastrar";
 import DeletePage from "./pages/DeletePage";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Editar from "./pages/Editar";
 
 ReactDOM.render(
     <BrowserRouter>
@@ -13,6 +14,7 @@ ReactDOM.render(
             <Route path="/" component={Home} exact />
             <Route path="/cadastro" component={Cadastrar} exact />
             <Route path="/deletar" component={DeletePage} exact />
+            <Route path="/editar" component={Editar} exact/>
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>,

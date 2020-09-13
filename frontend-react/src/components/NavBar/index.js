@@ -25,7 +25,7 @@ class NavBar extends React.Component {
                         <NavButton className="li-header" href="/euc">
                             Editar um campo
                         </NavButton>
-                        <NavButton className="li-header" href="/ev">
+                        <NavButton className="li-header" href="/editar">
                             Editar varios
                         </NavButton>
                     </ul>
